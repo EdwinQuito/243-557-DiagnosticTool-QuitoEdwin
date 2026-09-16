@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
 )
 from src.models.sensor import Sensor 
 from src.models.Actuator import Actuator 
-
+from src.hardware.simulation_hardware import SimulationHardware
 
 class MainWindow(QWidget):
     """Fenêtre principale du logiciel de diagnostic."""
@@ -16,12 +16,15 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle("243-557 — DiagnosticTool")
+        self.hardware = SimulationHardware()
         self.resize(360, 220)
+
         self.sensor = Sensor(
             "Distance",
             "cm",
-            35.0,
+            self.hardware,
         )
+
         self.actuator = Actuator("LED de diagnostic")
         self.title_label = QLabel("Logiciel de diagnostic - Edwin Quito")
         self.sensor_name_label = QLabel(f"Capteur : {self.sensor.name}")
