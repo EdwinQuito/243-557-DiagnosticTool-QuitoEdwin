@@ -1,9 +1,6 @@
 class Sensor:
     """Représente un capteur du système."""
 
-class Sensor:
-    """Représente un capteur du système."""
-
     def __init__(
         self,
         name: str,
